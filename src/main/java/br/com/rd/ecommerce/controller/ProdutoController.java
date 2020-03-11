@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,16 +22,21 @@ public class ProdutoController {
     }
 
     @GetMapping("/produto")
-    public ResponseEntity<Produto> buscarPorCodigoDescricao(@PathParam("id") Long id,
+    public ResponseEntity<List<Produto>> buscarPorCodigoDescricao(@PathParam("id") Long id,
                                                             @PathParam("descricao") String descricao) {
+        List<Produto> produto = new ArrayList<>();
         if (id != null && descricao != null)
-            return ResponseEntity.ok().body(repository.findByCodProdutoAndDescricao(id, descricao).get(0));
+            produto = repository.findByCodProdutoAndDescricao(id, descricao);
         else if (id != null)
-            return ResponseEntity.ok().body(repository.findById(id).get());
+           produto.add(repository.findById(id).get());
         else if (descricao != null)
-            return ResponseEntity.ok().body(repository.findByDescricao(descricao).get(0));
-        else
+           produto=  repository.findByDescricao(descricao);
+
+        if(produto != null && produto.size()>0){
+            return ResponseEntity.ok().body(produto);
+        }else{
             return ResponseEntity.badRequest().build();
+        }
 
     }
 
