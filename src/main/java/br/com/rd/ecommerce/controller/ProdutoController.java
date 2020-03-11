@@ -41,9 +41,14 @@ public class ProdutoController {
     }
 
     @DeleteMapping("/produto/{id}")
-    public void deleteById(@PathVariable("id") Long id) {
+    public void excluirProduto(@PathVariable("id") Long id) {
         repository.deleteById(id);
     }
+
+//    @DeleteMapping("/produto")
+//    public void excluirProduto(@RequestBody Produto produto) {
+//        repository.delete(produto);
+//    }
 
     @PutMapping("/produto")
     public Produto alterar(@RequestBody Produto produto) {
