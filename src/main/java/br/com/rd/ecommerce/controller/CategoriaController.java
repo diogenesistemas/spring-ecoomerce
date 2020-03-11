@@ -39,7 +39,7 @@ public class CategoriaController {
 
 //
 
-    //Put alterar todos os campos, Path alterar alguns apenas
+    //Put alterar todos os campos, Patch alterar alguns apenas
 
         /*
     @PutMapping("/categoria")
@@ -55,9 +55,16 @@ public class CategoriaController {
     public Categoria alterar(@RequestBody Categoria categoria) {
         Categoria categoriaEntity = repository.getOne(categoria.getCodigo());
         categoriaEntity.setDescricao(categoria.getDescricao());
-        return repository.save(repository.save(categoriaEntity));
+        return repository.save(categoriaEntity);
     }
 
+
+    @PatchMapping("/categoria")
+    public Categoria alteraCamposEspecificos(@RequestBody Categoria categoria) {
+        Categoria categoriaEntity = repository.getOne(categoria.getCodigo());
+        categoriaEntity.setDescricao(categoria.getDescricao());
+        return repository.save(categoriaEntity);
+    }
 
 
 
