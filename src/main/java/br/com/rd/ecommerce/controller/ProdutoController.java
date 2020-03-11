@@ -19,14 +19,20 @@ public class ProdutoController {
         return repository.save(produto);
     }
 
-    @GetMapping("/produto/{id}")
+    @GetMapping("/produto/buscarporid/{id}")
     public Produto buscarPorId(@PathVariable("id") Long id){
         return repository.findById(id).get();
     }
 
-    @GetMapping("/produto/{descricao}")
+    @GetMapping("/produto/buscarpordescricao/{descricao}")
     public List<Produto> buscarPorDescricao(@PathVariable("descricao") String descricao){
         return repository.findByDescricao(descricao);
+    }
+
+    @GetMapping("/produto/{id}/{descricao}")
+    public List<Produto> buscarPorCodigoDescricao(@PathVariable("id") Long id,
+                                                  @PathVariable("descricao") String descricao){
+        return repository.findByCodProdutoAndDescricao(id, descricao);
     }
 
     @DeleteMapping("/produto/{id}")
