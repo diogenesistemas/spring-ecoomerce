@@ -1,6 +1,7 @@
 package br.com.rd.ecommerce.controller;
 
 import br.com.rd.ecommerce.model.Pedido;
+import br.com.rd.ecommerce.model.dto.PedidoDTO;
 import br.com.rd.ecommerce.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ public class PedidoController {
     PedidoService service;
 
     @PostMapping("/pedido")
-    public ResponseEntity<Pedido> salvarPedido(@RequestBody Pedido pedido) {
-        return ResponseEntity.ok().body(service.salvar(pedido));
+    public ResponseEntity salvarPedido(@RequestBody PedidoDTO pedidoDTO) {
+        return ResponseEntity.ok().body(service.salvar(pedidoDTO));
     }
 }

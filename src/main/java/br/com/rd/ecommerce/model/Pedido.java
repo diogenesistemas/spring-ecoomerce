@@ -18,9 +18,17 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_pedido")
     private Integer codPedido;
+
+
+    @Column(name = "dt_atualizacao")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dtAtualizacao;
+
+
     @Column(name = "dt_pedido")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dtPedido;
+
     @Column(name = "id_cliente")
     private Integer idCliente;
     @Column(name = "vl_pedido")
