@@ -1,4 +1,4 @@
-package br.com.rd.ecommerce.service;
+package br.com.rd.ecommerce.repository;
 
 import br.com.rd.ecommerce.model.Pedido;
 import org.springframework.data.jpa.repository.JpaRepository;

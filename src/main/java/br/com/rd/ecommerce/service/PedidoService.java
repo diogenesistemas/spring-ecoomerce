@@ -4,6 +4,7 @@ import br.com.rd.ecommerce.model.ItemPedido;
 import br.com.rd.ecommerce.model.Pedido;
 import br.com.rd.ecommerce.model.dto.ItemPedidoDTO;
 import br.com.rd.ecommerce.model.dto.PedidoDTO;
+import br.com.rd.ecommerce.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
