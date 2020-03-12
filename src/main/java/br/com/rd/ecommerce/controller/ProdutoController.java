@@ -16,11 +16,13 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository repository;
 
+
     @PostMapping("/produto")
     public Produto salvar(@RequestBody Produto produto) {
         return repository.save(produto);
     }
 
+//    @CrossOrigin
     @GetMapping("/produto")
     public ResponseEntity<List<Produto>> buscarPorCodigoDescricao(@PathParam("id") Long id,
                                                             @PathParam("descricao") String descricao) {
